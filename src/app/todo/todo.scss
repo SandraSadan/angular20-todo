@@ -1,0 +1,215 @@
+// ---------- Color palette ----------
+$primary: #6c63ff;
+$accent: #00c6ff;
+$background: #f5f7fb;
+$card-bg: #ffffff;
+$text-dark: #333;
+$text-light: #777;
+$success: #27ae60;
+$danger: #ff4d4f;
+
+// ---------- Base layout ----------
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background: linear-gradient(135deg, $primary, $accent);
+    padding: 2rem;
+    font-family: "Poppins", sans-serif;
+    color: $text-dark;
+
+    .app-title {
+        color: #fff;
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        letter-spacing: 1px;
+        text-align: center;
+        animation: fadeInDown 0.8s ease;
+    }
+
+    .todo-card {
+        background: $card-bg;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        padding: 2rem;
+        width: 100%;
+        max-width: 480px;
+        animation: slideUp 0.8s ease;
+
+        // ---------- Add Task Section ----------
+        .add-task {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+
+            .task-input {
+                flex: 1;
+                padding: 0.9rem 1rem;
+                border: 2px solid transparent;
+                border-radius: 1rem;
+                background: #f0f2f7;
+                transition: all 0.3s ease;
+                font-size: 1rem;
+
+                &:focus {
+                    outline: none;
+                    background: #fff;
+                    border-color: $primary;
+                    box-shadow: 0 0 0 3px rgba($primary, 0.2);
+                }
+            }
+
+            .add-btn {
+                background: $primary;
+                color: #fff;
+                border: none;
+                border-radius: 1rem;
+                padding: 0.9rem 1.4rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background: darken($primary, 10%);
+                    transform: scale(1.05);
+                }
+
+                &:active {
+                    transform: scale(0.97);
+                }
+            }
+        }
+
+        // ---------- Task List ----------
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+
+            .task-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: #fafafa;
+                padding: 0.8rem 1rem;
+                border-radius: 1rem;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+                transition: all 0.3s ease;
+                animation: fadeIn 0.4s ease;
+
+                &:hover {
+                    transform: translateY(-3px);
+                }
+
+                &.completed {
+                    background: #e8f9e9;
+
+                    .task-text {
+                        text-decoration: line-through;
+                        color: $text-light;
+                    }
+
+                    .checkmark {
+                        color: $success;
+                    }
+                }
+
+                .task-content {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.8rem;
+
+                    .checkmark {
+                        font-size: 1.2rem;
+                        color: lighten($text-light, 15%);
+                        transition: color 0.3s ease;
+                    }
+
+                    .task-text {
+                        font-size: 1rem;
+                        color: $text-dark;
+                    }
+                }
+
+                .delete-btn {
+                    background: transparent;
+                    border: none;
+                    color: $danger;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    transition: transform 0.2s ease;
+
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+                }
+            }
+        }
+
+        // ---------- Footer ----------
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: $text-light;
+
+            .clear-btn {
+                background: none;
+                border: none;
+                color: $accent;
+                font-weight: 500;
+                cursor: pointer;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: darken($accent, 10%);
+                }
+            }
+        }
+    }
+}
+
+// ---------- Animations ----------
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,36 @@
+<div class="todo-container">
+    <h1 class="app-title">My Tasks</h1>
+
+    <div class="todo-card">
+        <div class="add-task">
+            <input [(ngModel)]="taskName" name="taskName" type="text" class="task-input"
+                placeholder="Add a new task..." />
+            <button class="add-btn" (click)="addTask()">Add</button>
+        </div>
+
+        <ul class="task-list">
+            <!-- <li class="task-item">
+                <div class="task-content">
+                    <span class="checkmark"></span>
+                    <span class="task-text">Sample task goes here</span>
+                </div>
+                <button class="delete-btn">✖</button>
+            </li> -->
+            <!-- Signal is accessed as a method -->
+            @for (item of taskList(); track $index) {
+            <li class="task-item completed">
+                <div class="task-content">
+                    <span class="checkmark">✔ {{item.status}}</span>
+                    <span class="task-text">{{item.name}}</span>
+                </div>
+                <button class="delete-btn">✖</button>
+            </li>
+            }
+        </ul>
+
+        <div class="footer">
+            <span>2 tasks remaining</span>
+            <button class="clear-btn">Clear Completed</button>
+        </div>
+    </div>
+</div>
